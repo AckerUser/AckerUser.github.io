@@ -9,7 +9,7 @@
 
 ## 核心思想
 
-![1602427614167](img\hadoop\1602427614167.png)
+![1602427614167](https://img-blog.csdnimg.cn/20201019084725992.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODI5ODM1,size_16,color_FFFFFF,t_70#pic_center)
 
 1. 分布式的运算程序往往需要分成至少2个阶段  
    1. 第一个阶段的MapTask并发实例，完全并行运行，互不相干。
@@ -75,7 +75,7 @@
 * 数据块：Block是HDFS物理上把数据分成一块一块
 * 数据切片：逻辑上对输入进行分片，并不会在磁盘将其分成片进行存储
 
-![1603162739457](img\hadoop\1603162739457.png)
+![1603162739457](https://img-blog.csdnimg.cn/20201026085856581.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODI5ODM1,size_16,color_FFFFFF,t_70#pic_center)
 
 ##### job提交流程源码和切片源码
 
@@ -117,7 +117,7 @@ status = submitClient.submitJob(jobId, submitJobDir.toString(), job.getCredentia
 
 ```
 
-![1603163026191](img\hadoop\1603163026191.png)
+![1603163026191](https://img-blog.csdnimg.cn/202010260859447.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODI5ODM1,size_16,color_FFFFFF,t_70#pic_center)
 
 ##### FileInputFormat切片源码解析  
 
@@ -147,7 +147,7 @@ status = submitClient.submitJob(jobId, submitJobDir.toString(), job.getCredentia
 *  将多个小文件从逻辑上规划到一个MapTask处理  
 *  虚拟存储切片最大值设置  （设置最好根据实际的小文件大小情况）
 
-![1603166127423](img\hadoop\1603166127423.png)
+![1603166127423](https://img-blog.csdnimg.cn/20201026090025391.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODI5ODM1,size_16,color_FFFFFF,t_70#pic_center)
 
 ​         当剩余数据大小超过设置的最大值且不大于最大值2倍，此时将文件均分成2个虚拟存储块（防止出现太小切片）  
 
@@ -185,16 +185,6 @@ NLineInputFormat切片机制
   * job.setOutputFormatClass(SequenceFileOutputFormat.class)
 
 ### MapReduce工作流程
-
-![1608555127258](img\hadoop\1608555127258.png)
-
-
-
-![1608555162041](img\hadoop\1608555162041.png)
-
-
-
-上面的流程是整个MapReduce最全工作流程，但是Shuffle过程只是从第7步开始到第16步结束，具体Shuffle过程详解，如下：
 
 1）MapTask收集我们的map()方法输出的kv对，放到内存缓冲区中
 
@@ -246,7 +236,7 @@ collector.close();
 
 概念：主要是**Map阶段**之后，**Reduce阶段**之前对数据的**分区**、**排序**、**合并**、**分组**过程
 
-![1604546405410](img\hadoop\1604546405410.png)
+![1604546405410](https://img-blog.csdnimg.cn/2020110514113862.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQyODI5ODM1,size_16,color_FFFFFF,t_70#pic_center)
 
 #### 分区（Partition）
 
@@ -309,8 +299,6 @@ collector.close();
    3. 创建一个构造将比较对象的类传给父类  
 
 ### MapTask工作机制
-
-![1608555381030](img\hadoop\1608555381030.png)
 
 （1）Read阶段：MapTask通过用户编写的RecordReader，从输入InputSplit中解析出一个个key/value。
 
