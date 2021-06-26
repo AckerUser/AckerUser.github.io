@@ -1,3 +1,9 @@
+---
+layout: post
+title: MapReduce
+date: 2020-11-01 
+tags: 大数据   
+---
 # MapReduce
 
 ## 简介
