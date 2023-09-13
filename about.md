@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 我 
+title: 个人介绍
 ---
 
 ## 自我评价
