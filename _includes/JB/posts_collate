@@ -38,10 +38,6 @@ Usage:
     {% endif %}
   
     <li>
-      <span>
-        {{ post.date | date: "%Y-%m-%e" }}
-      </span>
-       &raquo; 
       <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a>
     </li>
  
